@@ -85,6 +85,13 @@ int invalidKeyLength(char* keyLength){
     return VALID;
 }
 
+void displayOptions(){
+    printf("\tWRITE AN OPTION\n");
+    printf("1. encrypt [MESSAGE]\n");
+    printf("2. decrypt [MESSAGE]\n");
+    printf("3. quit\n\n");
+}
+
 int main(int argc, char* argv[]){
     // Check if enough command line arguments
     if(argc <= 2){
@@ -134,6 +141,8 @@ int main(int argc, char* argv[]){
 
     // command will store the command and plaintext/ciphertext
     char command[MAX_SIZE];
+
+    displayOptions();
     
     // If user enters ctrl + d, the program will end.
     while(fgets(command, MAX_SIZE, stdin) != NULL){
@@ -152,6 +161,8 @@ int main(int argc, char* argv[]){
 
         if(invalidCommand(command, keyLength, argv))
             printf("Invalid command, try [encrypt/decrypt] [MESSAGE]. Else, type [quit]\n");
+
+        displayOptions();
     } 
 
     return 0;
